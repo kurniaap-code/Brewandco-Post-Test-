@@ -1,0 +1,677 @@
+/* app/admin/dashboard/page.module.css - Ganti seluruh isi */
+
+/* ===== BACKGROUND ===== */
+.dashboard {
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+    /* background-image: url('https://i.pinimg.com/1200x/bc/bb/a6/bcbba67fd190eb2a6d0356a347f0eace.jpg'); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.dashboard::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 0;
+}
+
+/* ===== LOADING ===== */
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #FED8B1;
+    font-size: 18px;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    font-size: 28px;
+    color: #FED8B1;
+}
+
+.logo h2 {
+    color: #FED8B1;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.navLinks {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.navLink {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    padding: 8px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.navLink:hover,
+.navLink.active {
+    background: rgba(254, 216, 177, 0.2);
+    color: #FED8B1;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+}
+
+.userInfo i {
+    font-size: 20px;
+    color: #FED8B1;
+}
+
+.logoutBtn {
+    background: rgba(254, 216, 177, 0.2);
+    border: 1px solid rgba(254, 216, 177, 0.5);
+    padding: 8px 16px;
+    border-radius: 12px;
+    color: #FED8B1;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.logoutBtn:hover {
+    background: rgba(254, 216, 177, 0.4);
+    transform: translateY(-2px);
+}
+
+/* ===== MAIN CONTAINER ===== */
+.mainContainer {
+    position: relative;
+    z-index: 1;
+    padding-top: 80px;
+    min-height: 100vh;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* ===== STATS CARDS ===== */
+.statsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.statCard {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s;
+}
+
+.statCard:hover {
+    transform: translateY(-5px);
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.statIcon {
+    font-size: 40px;
+    color: #FED8B1;
+    margin-bottom: 15px;
+}
+
+.statNumber {
+    font-size: 36px;
+    font-weight: 800;
+    color: #FFB347;
+    margin-bottom: 5px;
+}
+
+.statLabel {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+}
+
+/* ===== CONTENT SECTIONS ===== */
+.contentSection {
+    display: none;
+    padding: 20px 0;
+    animation: fadeIn 0.5s ease;
+}
+
+.contentSection.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== SECTION HEADER ===== */
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.sectionHeader h2 {
+    color: #FED8B1;
+    font-size: 28px;
+}
+
+.btnAdd {
+    background: linear-gradient(135deg, #FED8B1 0%, #FFB347 100%);
+    color: #5A3E2B;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btnAdd:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(254, 216, 177, 0.3);
+}
+
+/* ===== SEARCH BOX ===== */
+.searchBox {
+    margin-bottom: 20px;
+}
+
+.searchBox input {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px 16px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+.searchBox input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.searchBox input:focus {
+    outline: none;
+    border-color: #FED8B1;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.filterWrapper {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.filterSelect {
+    padding: 10px 16px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+.filterSelect option {
+    background: #2D3436;
+}
+
+.filterSelect:focus {
+    outline: none;
+    border-color: #FED8B1;
+}
+
+/* ===== TABLE ===== */
+.tableContainer {
+    overflow-x: auto;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tableContainer table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+}
+
+.tableContainer thead {
+    background: rgba(254, 216, 177, 0.1);
+}
+
+.tableContainer th,
+.tableContainer td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tableContainer th {
+    color: #FED8B1;
+    font-weight: 600;
+}
+
+.productImage {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btnEdit,
+.btnDelete,
+.btnView {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.btnEdit {
+    background: #4A90E2;
+    color: white;
+}
+
+.btnEdit:hover {
+    background: #357ABD;
+    transform: translateY(-1px);
+}
+
+.btnDelete {
+    background: #DC2626;
+    color: white;
+}
+
+.btnDelete:hover {
+    background: #B91C1C;
+    transform: translateY(-1px);
+}
+
+.btnView {
+    background: #FFB347;
+    color: #5A3E2B;
+}
+
+.btnView:hover {
+    background: #FFA500;
+    transform: translateY(-1px);
+}
+
+/* ===== STATUS BADGE ===== */
+.statusBadge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.statusPending {
+    background: #FFA500;
+    color: #5A3E2B;
+}
+
+.statusProses {
+    background: #4A90E2;
+    color: white;
+}
+
+.statusSelesai {
+    background: #4CAF50;
+    color: white;
+}
+
+/* ===== MODAL ===== */
+.modal {
+    display: none !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex !important;
+}
+
+.modalContent {
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: slideIn 0.3s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1001;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px) scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.modalContent h3 {
+    color: #FED8B1;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.modalContent .formGroup {
+    margin-bottom: 20px;
+}
+
+.modalContent label {
+    display: block;
+    color: #FED8B1;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.modalContent input,
+.modalContent textarea,
+.modalContent select {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+.modalContent input::placeholder,
+.modalContent textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.modalContent input:focus,
+.modalContent textarea:focus,
+.modalContent select:focus {
+    outline: none;
+    border-color: #FED8B1;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 0 4px rgba(254, 216, 177, 0.1);
+}
+
+.modalContent select option {
+    background: #2D3436;
+    color: white;
+}
+
+.imagePreview {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.imagePreview img {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 16px;
+    border: 2px solid #FED8B1;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.currentImage {
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.currentImage img {
+    max-width: 100px;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
+.modalButtons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btnSave,
+.btnCancel {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+
+.btnSave {
+    background: linear-gradient(135deg, #FED8B1 0%, #FFB347 100%);
+    color: #5A3E2B;
+}
+
+.btnCancel {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.btnSave:hover,
+.btnCancel:hover {
+    transform: translateY(-2px);
+}
+
+.btnSave:hover {
+    box-shadow: 0 5px 20px rgba(254, 216, 177, 0.3);
+}
+
+.btnCancel:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* ===== NOTIFICATION ===== */
+.notification {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    z-index: 1100;
+    animation: slideInRight 0.3s ease;
+}
+
+.notificationError {
+    background: #DC2626;
+}
+
+.notificationSuccess {
+    background: #4CAF50;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navLinks {
+        justify-content: center;
+    }
+
+    .statsContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .tableContainer th,
+    .tableContainer td {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .productImage {
+        width: 40px;
+        height: 40px;
+    }
+
+    .modalContent {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .actionButtons {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+/* app/admin/dashboard/page.module.css - Tambahkan di akhir */
+
+/* ===== MODAL OVERRIDE ===== */
+.modal {
+    display: none !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal.active {
+    display: flex !important;
+}
+
+.modalContent {
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: slideIn 0.3s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+}
+
+.modalContent .btnSave i,
+.modalContent .btnCancel i {
+    margin-right: 8px;
+}
+
+.modalContent .btnSave {
+    background: linear-gradient(135deg, #FED8B1 0%, #FFB347 100%);
+    color: #5A3E2B;
+}
+
+.modalContent .btnSave:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(254, 216, 177, 0.3);
+}
+
+.modalContent .btnCancel {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.modalContent .btnCancel:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
